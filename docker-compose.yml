@@ -1,0 +1,13 @@
+services:
+  wa-bot:
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    volumes:
+      - ./data:/app/data
+      - ./auth:/app/auth
+      - ./config:/app/config
+    restart: unless-stopped
